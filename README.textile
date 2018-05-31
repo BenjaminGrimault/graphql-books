@@ -1,0 +1,50 @@
+h1. Books
+
+h2. MongoDB
+
+La base de données est présente sur un container docker.
+
+Initialiser le container :
+<pre>
+docker run -d -p 27017:27017 --name mongo-books -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=p@ssw0rd mongo
+</pre>
+
+Lancer le container après l'initialisation :
+<pre>
+docker container start mongo-books
+</pre>
+
+Se connecter à la console de la BDD (pour exécuter des requêtes) :
+<pre>
+docker run -it --rm --link mongo-books:mongo mongo mongo --host mongo -u mongoadmin -p p@ssw0rd --authenticationDatabase admin books
+</pre>
+
+
+h2. Tests de requêtes
+
+Exemple de données à envoyer en body d'une requête d'ajout/update de livre.
+<pre><code class="json">
+{
+  "title": "babebibobu",
+  "publishedDate": "31/06/2009",
+  "type": "enfants",
+  "price": "42 €",
+  "authorId": "5b0fb57907de2f3f950f3c0e"
+}
+</code></pre>
+
+Exemple de données à envoyer en body d'une requête d'ajout/update d'auteur.
+<pre><code class="json">
+{
+  "name": "de la Fontaine",
+  "firstName": "Jean",
+  "birthDate": "8/07/1621"
+}
+</code></pre>
+
+Exemple de données à envoyer en body d'une requête d'ajout de commentaire.
+<pre><code class="json">
+{
+  "message": "c tro coul"
+}
+</code></pre>
