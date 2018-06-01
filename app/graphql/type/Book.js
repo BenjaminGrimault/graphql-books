@@ -13,6 +13,7 @@ const Author = require('../../model/Author.js');
 
 module.exports = new GraphQLObjectType({
     name: 'Book',
+    description: 'If you don\'t know what is a book, go back to elementary school',
     fields: {
         id: {
             type: GraphQLString,

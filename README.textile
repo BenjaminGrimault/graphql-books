@@ -1,5 +1,12 @@
 h1. Books
 
+Démarrer le serveur en ligne de commande avec :
+<pre>
+npm start
+</pre>
+
+Le serveur est démarré lorsque _Listening on port 3000_ s'affiche dans la console.
+
 h2. MongoDB
 
 La base de données est présente sur un container docker.
@@ -20,7 +27,35 @@ docker run -it --rm --link mongo-books:mongo mongo mongo --host mongo -u mongoad
 </pre>
 
 
-h2. Tests de requêtes
+h2. API REST
+
+h3. Routes
+
+GET /   : Bienvenue
+GET /ah : [pensez à Denis] AH !
+
+h4. Livres
+
+GET /book/       : obtenir la liste de tous les livres
+GET /book/:id    : obtenir les informations d'un livre par son ID
+PUT /book/       : ajouter un livre (voir _Requêtes de test_ plus bas pour le format des données à envoyer)
+PATCH /book/:id  : modifier un livre par son ID
+DELETE /book/:id : supprimer un livre par son ID
+
+h4. Commentaires
+
+PUT /book/:id/comment : Ajouter un commentaire sur un livre (voir _Requêtes de test_ plus bas pour le format des données à envoyer)
+
+h4. Auteurs
+
+GET /author/       : obtenir la liste de tous les auteurs
+GET /author/:id    : obtenir les informations d'un auteurs par son ID
+PUT /author/       : ajouter un auteur (voir _Requêtes de test_ plus bas pour le format des données à envoyer)
+PATCH /author/:id  : modifier un auteur par son ID
+DELETE /author/:id : supprimer un auteur par son ID
+
+
+h3. Requêtes de test
 
 Exemple de données à envoyer en body d'une requête d'ajout/update de livre.
 <pre><code class="json">
@@ -48,3 +83,8 @@ Exemple de données à envoyer en body d'une requête d'ajout de commentaire.
   "message": "c tro coul"
 }
 </code></pre>
+
+
+h2. API GraphQL
+
+Accessible sur /graphql

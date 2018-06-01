@@ -5,6 +5,7 @@ const {
 
 module.exports = new GraphQLObjectType({
     name: 'Comment',
+    description: 'Comment on a book',
     fields: {
         message: { type: GraphQLString, description: 'Comment' },
     }
