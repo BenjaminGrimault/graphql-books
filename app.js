@@ -1,5 +1,10 @@
+// Libraries
 const app = require('express')();
 const bodyParser = require('body-parser');
+const graphql = require('express-graphql');
+
+// GraphQL
+const gqlSchema = require('./app/graphql/schema.js');
 
 // Routes
 const indexRouter  = require('./app/route/index.js');
@@ -13,5 +18,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', indexRouter);
 app.use('/book', bookRouter);
 app.use('/author', authorRouter);
+
+// GraphQL
+app.use('/graphql', graphql({
+    schema: gqlSchema,
+    graphiql: true,
+}));
 
 module.exports = app;
